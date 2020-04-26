@@ -1,29 +1,21 @@
 pipeline {
     agent any
+
     stages {
-        stage ('Compile Stage') {
-
+        stage('Build') {
             steps {
-                withMaven(maven : 'apache-maven-3.6.1') {
-                    bat 'mvn clean compile'
-                }
+                echo 'Building..'
             }
         }
-        stage ('Testing Stage') {
-
+        stage('Test') {
             steps {
-                withMaven(maven : 'apache-maven-3.6.1') {
-                    bat 'mvn test'
-                }
+                echo 'Testing..'
             }
         }
-        stage ('Install Stage') {
+        stage('Deploy') {
             steps {
-                withMaven(maven : 'apache-maven-3.6.1') {
-                    bat 'mvn install'
-                }
+                echo 'Deploying....'
             }
         }
     }
 }
-
